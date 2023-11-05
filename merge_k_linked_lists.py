@@ -64,18 +64,11 @@ def generate_random_sorted_linked_lists(k, n):
         # Generate a sorted linked list with random values
         linked_list = LinkedList()  # Create a new linked list
         for _ in range(elements_in_current_list):
-            linked_list.insert(random.randint(0, 10))  # Insert random values
+            linked_list.insert(random.randint(0, n))  # Insert random values
 
         lists.append(linked_list)
 
     return lists
-
-def print_linked_list(linked_list):
-    current = linked_list.head  # Start from the head of the linked list
-    while current:
-        print(current.value, end=" -> ")  # Print the value of the current node
-        current = current.next  # Move to the next node
-    print("None")
 
 class HeapNode:
     def __init__(self, linked_list_index, key):
@@ -101,7 +94,7 @@ def heapify_min(heap, length_heap, current):
 
     if smallest != current:
         heap[current], heap[smallest] = heap[smallest], heap[current]
-        assignments += 2  # Increment assignment count for swap
+        assignments += 3  # Increment assignment count for swap
         comp, assign = heapify_min(heap, length_heap, smallest)
         comparisons += comp
         assignments += assign
@@ -211,7 +204,7 @@ def task_1():
 def task_2():
  
     # Second part of the experiment (n = 10,000, varying k from 10 to 500 with an increment of 10)
-    k_values = list(range(100, 5001, 100))
+    k_values = list(range(10, 501, 10))
     n = 10000
 
     total_operations_k = []
